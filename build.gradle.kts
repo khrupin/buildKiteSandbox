@@ -3,6 +3,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
     kotlin("jvm") version "1.4.10"
     application
+    jacoco
 }
 
 group = "me.igor"
@@ -20,6 +21,14 @@ dependencies {
 
 tasks.test {
     useJUnitPlatform()
+}
+
+tasks.named("jacocoTestReport", JacocoReport::class) {
+    reports {
+        xml.isEnabled = true
+        csv.isEnabled = false
+        html.isEnabled = true
+    }
 }
 
 tasks.withType<KotlinCompile>() {
