@@ -1,5 +1,5 @@
 steps:
-  - label: "Unit Test Coverage"
+  - label: "Jacoco Test Coverage"
     command: "bash scripts/unit-tests-coverage.sh"
     key: "code-coverage"
     notify:
