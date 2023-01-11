@@ -5,5 +5,5 @@ steps:
     notify:
       - github_commit_status:
           context: "buildkite/code-coverage"
-    artifact_path:
+    artifact_paths:
       - "**/build/reports/jacoco/*/*.xml"
