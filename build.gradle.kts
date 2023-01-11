@@ -23,6 +23,10 @@ tasks.test {
     useJUnitPlatform()
 }
 
+tasks.withType<Test> {
+    maxHeapSize = "5G"
+}
+
 tasks.named("jacocoTestReport", JacocoReport::class) {
     reports {
         xml.isEnabled = true
