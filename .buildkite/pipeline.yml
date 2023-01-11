@@ -1,3 +1,3 @@
 steps:
   - label: "Unit Test Coverage"
-    command: "bash scripts/unit-test-coverage.sh"
+    command: "bash scripts/unit-tests-coverage.sh"
