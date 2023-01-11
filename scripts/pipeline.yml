@@ -1,3 +1,3 @@
 steps:
-  - label: "Example Test 4"
+  - label: "Example Test 5"
     command: echo "Hello!"
