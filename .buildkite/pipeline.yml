@@ -6,4 +6,4 @@ steps:
       - github_commit_status:
           context: "buildkite/code-coverage"
     artifact_paths:
-      - "**/build/reports/jacoco/*/*.xml"
+      - "**/mockBuildDir/reports/jacoco/*/*.xml"
