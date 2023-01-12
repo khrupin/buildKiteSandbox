@@ -7,13 +7,17 @@ echo "--- Parse Report"
 xmlReportFile=$(find . -name jacocoTestReport.xml)
 echo "PATH_TO_XML_REPORT: ${xmlReportFile}"
 
-wc -c xmlReportFile
+wc -c $xmlReportFile
 
-#missedNodesStr= doc.xpath("/report/counter[@type='INSTRUCTION']/@missed")
-missedNodesStr=$(xmllint --xpath "string(/report/counter[@type='INSTRUCTION']/@missed)" $xmlReportFile)
-coveredNodesStr=$(xmllint --xpath "string(/report/counter[@type='INSTRUCTION']/@covered)" $xmlReportFile)
-#coveredNodesStr = doc.xpath("/report/counter[@type='INSTRUCTION']/@covered")
-echo $missedNodesStr
-#echo $coveredNodesStr
 
-#VERSION=$(xmllint --xpath 'string(/addon/@version)' $ADDON_XML)
+missedNodes=$(xmllint --xpath "string(/report/counter[@type='INSTRUCTION']/@missed)" $xmlReportFile)
+coveredNodes=$(xmllint --xpath "string(/report/counter[@type='INSTRUCTION']/@covered)" $xmlReportFile)
+
+echo "missed nodes count = $missedNodes"
+echo "covered nodes count = $coveredNodes"
+
+totalNodes=$(echo "$missedNodes+$coveredNodes" | bc)
+
+codeCoveragePercentage=$(echo "r(($coveredNodes/$totalNodes)*100, 0)" | bc -l)
+
+echo "code coverage percentage = $codeCoveragePercentage"
