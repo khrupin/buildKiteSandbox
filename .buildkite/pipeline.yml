@@ -1,7 +1,16 @@
 steps:
-  - label: "Unit Test Coverage"
+  - label: "Jacoco Test Coverage"
     command: "bash scripts/unit-tests-coverage.sh"
-    key: "code-coverage"
+    key: "generate-code-coverage"
     notify:
       - github_commit_status:
           context: "buildkite/code-coverage"
+    artifact_paths:
+      - "**/mockBuildDir/reports/jacoco/*/*.xml"
+
+  - label: "Parse Jacoco Report"
+    #command: "ruby scripts/jacocoXmlReportParser.rb"
+    command: "ruby scripts/hello.sh"
+    key: "code-coverage-report"
+    depends_on:
+      - step: "generate-code-coverage"
