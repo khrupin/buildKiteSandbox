@@ -7,4 +7,4 @@ PATH_TO_XML_REPORT=$(find . -name jacocoTestReport.xml)
 echo "PATH_TO_XML_REPORT: ${PATH_TO_XML_REPORT}"
 
 wc -c $PATH_TO_XML_REPORT
-./jacocoXmlReportParser.sh $PATH_TO_XML_REPORT
+scripts/jacocoXmlReportParser.sh $PATH_TO_XML_REPORT
