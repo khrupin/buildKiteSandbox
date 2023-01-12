@@ -10,7 +10,7 @@ steps:
 
   - label: "Parse Jacoco Report"
     #command: "ruby scripts/jacocoXmlReportParser.rb"
-    command: "ruby scripts/hello.sh"
+    command: "bash scripts/hello.sh **/mockBuildDir/reports/jacoco/*/*.xml"
     key: "code-coverage-report"
     depends_on:
       - step: "generate-code-coverage"
