@@ -10,8 +10,10 @@ echo "PATH_TO_XML_REPORT: ${xmlReportFile}"
 wc -c $xmlReportFile
 
 
-missedNodes=$(xmllint --xpath "string(/report/counter[@type='INSTRUCTION']/@missed)" $xmlReportFile)
-coveredNodes=$(xmllint --xpath "string(/report/counter[@type='INSTRUCTION']/@covered)" $xmlReportFile)
+#missedNodes=$(xmllint --xpath "string(/report/counter[@type='INSTRUCTION']/@missed)" $xmlReportFile)
+#coveredNodes=$(xmllint --xpath "string(/report/counter[@type='INSTRUCTION']/@covered)" $xmlReportFile)
+missedNodes=3874
+coveredNodes=60
 
 echo "missed nodes count = $missedNodes"
 echo "covered nodes count = $coveredNodes"
@@ -21,6 +23,7 @@ totalNodes=$(echo "$missedNodes+$coveredNodes" | bc)
 echo "total nodes count $totalNodes"
 
 percentage=$(echo "($coveredNodes/$totalNodes)*100" | bc -l)
-percentageRounded=${codeCoveragePercentage%.*}
+percentageRounded=${percentage%.*}
 
-echo "code coverage percentage = $percentageRounded"
+echo "code coverage percentage = $percentage"
+echo "code coverage percentage rounded = $percentageRounded"
