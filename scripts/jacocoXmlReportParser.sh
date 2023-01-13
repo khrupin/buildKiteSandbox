@@ -18,6 +18,9 @@ echo "covered nodes count = $coveredNodes"
 
 totalNodes=$(echo "$missedNodes+$coveredNodes" | bc)
 
-codeCoveragePercentage=$(echo "r(($coveredNodes/$totalNodes)*100, 0)" | bc -l)
+echo "total nodes count $totalNodes"
 
-echo "code coverage percentage = $codeCoveragePercentage"
+percentage=$(echo "($coveredNodes/$totalNodes)*100" | bc -l)
+percentageRounded=${codeCoveragePercentage%.*}
+
+echo "code coverage percentage = $percentageRounded"
